@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Vaxxed NOW!</title>
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        html, body {
+            overflow: hidden;
+            height: 100%; /* Ensure the body and html take full height */
+            margin: 0; /* Remove default margin */
+        }
+
+        .containerr {
+            background-image: url('./about-bg.png'); /* Ensure this path is correct */
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 100%;
+            transition: transform 1s ease; /* Smooth transition for zoom effect */
+            animation: shake 0.5s ease infinite alternate; /* Add shake effect */
+        }
+
+        .zoom {
+            transform: scale(1.65) translateY(20%) translateX(5%); /* Zoom in by 80% and move up */
+        }
+
+        #vaxxed {
+            display: none; /* Initially hide the div */
+            color: white; /* Optional: Set text color */
+            text-align: center; /* Optional: Center the text */
+            margin-top: 20px; /* Optional: Add some margin for spacing */
+        }
+
+        /* Shake Animation */
+        @keyframes shake {
+            0% {
+                transform: translate(0);
+            }
+            25% {
+                transform: translate(-5px, 0);
+            }
+            50% {
+                transform: translate(2px, 0);
+            }
+            75% {
+                transform: translate(-7px, 0);
+            }
+            100% {
+                transform: translate(7px, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="containerr">
+    <div  style="color:black;width: 100%;height: 100%;padding-top: 220px;padding-right: 60px" id="vaxxed">
+        chaos ?
+        <br>
+        <br>
+        <button onclick="window.location.href = 'home.html';">YES</button>
+        <button onclick="access('denied')">NO</button>
+    </div>
+</div>
+
+<script>
+    // Wait for the window to load
+    window.onload = function () {
+        // After 3 seconds, remove the shake effect and add the zoom class
+        setTimeout(function () {
+            // Stop shaking and start zooming
+            const container = document.querySelector('.containerr');
+            container.style.animation = 'none'; // Stop the shake animation
+            container.classList.add('zoom'); // Start zoom
+
+            // Show the vaxxed div after the zoom effect
+            setTimeout(function () {
+                document.getElementById('vaxxed').style.display = 'block'; // Show the div
+            }, 1000); // Wait 1 second after zoom starts
+        }, 3000); // 3000 milliseconds = 3 seconds
+    };
+
+    function access(status) {
+        alert("Access " + status); // Replace this with your access logic
+    }
+</script>
+</body>
+</html>
